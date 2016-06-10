@@ -1,10 +1,58 @@
 \documentclass[a4,10pt,twoside]{report}
 
-
+\usepackage{amsmath}
 
 \begin{document}
-	\huge{\title{Summer Project Notes}}
+	\title{Summer Project Notes}
 	\date{9 June 2016}
 	\author{Sohom Roy}
 	\maketitle
+	
+	
+	\tableofcontents
+
+	
+	\chapter{First Chapter}
+	\section{The equations governing the expansion of the universe}
+	
+	In cosmology, we come across three important equations which are central to our understanding of how the universe evolves with time.\\ \\
+	The first of these is the Friedmann equation, which relates the scale factor $a(t)$, the curvature $\kappa$ of the universe, the energy density, $\varepsilon$ and tells us how the scale factor evolves with time.\\
+	
+	The equation is as given below:
+	\begin{equation}
+	\left(\frac{\dot{a}}{a}\right)^2=\frac{8\pi G}{3c^2}\varepsilon-\frac{\kappa c^2}{R_0^2a^2}
+	\end{equation}
+	
+	$\kappa$ can be either equal to $0$, $+1$, $-1$, corresponding respectively to a flat, positively curved and a negatively curved universe.
+	The left hand side is the square of the Hubble constant $H(t)$.
+	
+	The second equation is the fluid equation, which is derived from thermodynamics, and is given by
+	
+	\begin{equation}
+		\dot{\varepsilon}+3\frac{\dot{a}}{a}(\varepsilon+P)=0
+	\end{equation}
+	
+	The third equation is the acceleration equation, which is not really an independent equation, but is derived from the above two equations.
+	
+	\begin{equation}
+		\frac{\ddot{a}}{a}=-\frac{4\pi G}{3c^2}(\varepsilon+3P)
+	\end{equation}
+	
+	The last equation is the equation of state, which gives a relation between the pressure $P$ and energy density $\varepsilon$.
+	
+	\begin{equation}
+		P=w\varepsilon
+	\end{equation}
+	
+	For non-relativistic matter, $w=0$. For relativistic matter(radiation), $w=\frac{1}{3}$.
+	
+	There is another component of the universe, the cosmological constant, $\Lambda$, which was introduced by Einstein to account for a static universe containing only matter and radiation. It has $w=-1$.
+	
+	In the Friedmann equation, putting the curvature constant $\kappa$ equal to zero, gives us a value for the energy density, which we call the critical density.
+	
+	\begin{equation}
+	H^2(t)=\frac{8\pi G}{3c^2}\varepsilon_c
+	
+	\end{equation}
+	
 \end{document}
