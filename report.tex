@@ -1,6 +1,7 @@
-\documentclass[a4,10pt,twoside]{report}
+\documentclass[a4,10pt,oneside]{report}
 
 \usepackage{amsmath}
+\usepackage{amssymb}
 
 \begin{document}
 	\title{Summer Project Notes}
@@ -13,6 +14,157 @@
 
 	
 	\chapter{First Chapter}
+	
+	\section{Form of the metric for a homogeneous, isotropic universe}
+	
+	Initially, Newton had assumed that space is Euclidean. Then the distance between two points assumes the very simple form
+	
+	\begin{equation}
+		ds^2=dx^2+dy^2+dz^2
+	\end{equation}
+	
+	if we are using a Cartesian coordinate system. In spherical coordinates, this can be expressed as
+
+	\begin{eqnarray}
+	ds^2=dr^2+ r^2d\theta^2 + r^2sin^2\theta d\phi^2	\\
+	\Rightarrow ds^2=dr^2+ r^2(d\theta^2+sin^2\theta d\phi^2) \\
+	\Rightarrow ds^2=dr^2+ r^2d\Omega^2 
+	\end{eqnarray}
+	
+	But now, from Einstein's theory of general relativity we see that space can have curvature. That is, space can either be positively curved, flat(Euclidean), or negatively curved.
+	
+	The three possible metrics for a homogeneous, isotropic, three-dimensional space can be compactly written down as
+	
+	\begin{equation}
+	    ds^2=dr^2+S_\kappa(r)^2d\Omega^2
+	\end{equation}
+	
+	where 
+	
+	\begin{equation}
+		d\Omega^2=d\theta^2+sin^2\theta d\phi^2
+	\end{equation}
+	
+	and 
+	\begin{equation}
+		S_\kappa(r)=\begin{cases}R\:\sin\left(\dfrac{r}{R}\right),   &(\kappa=+1) \\
+		r,  &(\kappa=0) \\
+		R\:\sinh\left(\dfrac{r}{R}\right),  &(\kappa=-1)
+		\end{cases}
+	\end{equation}
+	
+	Thw Minkowski metric is given by
+	
+	\begin{equation}
+		ds^2=-c^2dt^2+dr^2+r^2d\Omega^2
+	\end{equation}
+	
+	Thsi metric applies for a flat or Euclidean space-time. This metric deals with the special case when space-time is not curved by the presence of mass and energy.
+	
+	\subsection{Robertson-Walker metric}
+	
+	This metric was introduced to describe a univere which was spatially homogeneous and isotropic, and where distances are allowed to expand or contract as a function of time. It is given by
+	
+	\begin{equation}
+		ds^2=-c^2dt^2+a(t)^2\left[\frac{dx^2}{1-\dfrac{\kappa x^2}{R_0^2}} +x^2d\Omega^2\right]
+	\end{equation}
+	
+	Here $a(t)$ is the scale factor, and the expression in square brackets is the metric for a uniformly curved space of radius $R_0$.
+
+	This equation can be rewritten as 
+	\begin{equation}
+		ds^2=-c^2dt^2+a(t)^2[dr^2+S_\kappa(r)^2d\Omega^2]
+	\end{equation}
+	
+	$ (r,\theta, \phi) $ are called the comoving coordinates. If the expansion of the universe is perfectly homogeneous and isotropic, then the comoving coordinates are constant with time. \\
+	
+	The scale factor $ a(t) $ is normalized so that $ a(t_0) =1$.
+	
+	\section{Proper distance}
+	The distance to a galaxy situated at a comoving coordinate $ (r,\theta,\phi) $ is given by the length of the spatial geodesic between these points when the scale factor is fixed at $ a(t) $. \\
+	
+	So, the distance is given by the Robertson-Walker metric at a fixed time $ t $.
+	\begin{equation}
+		ds^2=a(t)^2[dr^2+S_\kappa(r)^2d\Omega^2]
+	\end{equation}
+	
+	Along the spatial geodesic joining the observer and the galaxy, $ \theta $ and $ \phi $ are constant. So, the metric becomes
+	
+	\begin{eqnarray}
+		ds^2=a(t)^2dr^2 \\
+		\Rightarrow ds=a(t)dr \\
+	\end{eqnarray}
+	$\therefore$ Proper distance =\[d_p(t)=a(t)\int_0^r dr= a(t).r  \]
+	
+	Rate of change of proper distance:
+	\begin{eqnarray}
+		\dot{d_p}=\dot{a} r = \frac{\dot{a}}{a}d_p \\
+		\Rightarrow \frac{\dot{d_p}}{d_p}=\frac{\dot{a}}{a}
+	\end{eqnarray}
+	
+	So, we can see that there is a linear relation between the proper distance to a galaxy and its recession speed:
+	
+	\begin{equation}
+		v_p(t_0)=H_0d_p(t_0)
+	\end{equation}
+	
+	where $v_p(t_0)=\dot{d_p}(t_0)$ and $ H_0=\left(\dfrac{\dot{a}}{a}\right)_{t=t_0} $. \\
+	
+	
+	The angular position of a galaxy can easily be known, but not its proper distance, or its comoving distance $ r $. \\
+	
+	Light emitted from the galaxy at time $ t_e $ is observed by us at a time $ t_0 $. During its travel, light travelled along a null geodesic($ ds=0 $). We have $ \theta $ and $ \phi $ constant.
+	
+	\begin{eqnarray}
+		c^2dt^2=a(t)^2dr^2 \\
+		\Rightarrow c\frac{dt}{a(t)}=dr
+	\end{eqnarray}
+	
+	For a single wave crest emitted at time $ t_e $ and observed at time $ t_0 $, we have
+	
+	\begin{equation}
+		c\int_{t_e}^{t_0} \frac{dt}{a(t)} = \int_0^r dr = r
+	\end{equation}
+	
+	If wavelength of emitted light is given by $ \lambda_e $ and that of the observed light is given by $ \lambda_o $ (in general, $ \lambda_o \neq \lambda_e $), then we can say that the next wave crest of light is emitted at time $ t_e+\dfrac{\lambda_e}{c} $ and observed at time $ t_o + \dfrac{\lambda_o}{c} $.
+	
+	Thus, we can write
+	
+	\begin{equation}	
+		c\int_{t_e+\frac{\lambda_e}{c}}^{t_o+\frac{\lambda_o}{c}}= \int_0^r dr = r.
+	\end{equation}
+	
+	Comparing these equations, we see that
+	
+	\begin{equation}
+		\int_{t_e}^{t_0} \frac{dt}{a(t)} = \int_{t_e+\frac{\lambda_e}{c}}^{t_o+\frac{\lambda_o}{c}} \frac{dt}{a(t)}
+	\end{equation}
+	
+	Subtracting $ \int_{t_e+\frac{\lambda_e}{c}}^{t_0} \frac{dt}{a(t)} $ from both sides, we get
+	
+	\begin{equation}
+		\int_{t_e}^{t_e+\frac{\lambda_e}{c}} \frac{dt}{a(t)} = \int_{t_0}^{t_o+\frac{\lambda_o}{c}} \frac{dt}{a(t)}
+	\end{equation}
+	
+	We can also consider the scale factor to remain constant, since the universe does not expand by a significant amount during the time between two crests of the wave. \\
+	
+	So, we have
+	
+	\begin{eqnarray}
+		\frac{1}{a(t_e)}\int_{t_e}^{t_e+\frac{\lambda_e}{c}} dt = \frac{1}{a(t_o)}\int_{t_o}^{t_o+\frac{\lambda_o}{c}} dt	
+		\\
+		\Rightarrow \frac{1}{a(t_e)}.\frac{\lambda_e}{c} = \frac{1}{a(t_o)}.\frac{\lambda_o}{c}
+		\\
+		\Rightarrow \frac{1}{a(t_e)}.\lambda_e = \frac{1}{a(t_o)}.\lambda_o
+		\\
+		\Rightarrow \frac{\lambda_o}{\lambda_e} = \frac{a(t_o)}{a(t_e)}
+		\\
+		\text{Now,} z=\frac{\lambda_o-\lambda_e}{\lambda_e} \\
+		\Rightarrow z=\frac{\lambda_o}{\lambda_e}-1 \\
+		\Rightarrow 1+z = \frac{\lambda_o}{\lambda_e} = \frac{a(t_o)}{a(t_e)} = \frac{1}{a(t_e)}
+	\end{eqnarray}
+	
+	
 	\section{The equations governing the expansion of the universe}
 	
 	In cosmology, we come across three important equations which are central to our understanding of how the universe evolves with time.\\ \\
@@ -50,9 +202,77 @@
 	
 	In the Friedmann equation, putting the curvature constant $\kappa$ equal to zero, gives us a value for the energy density, which we call the critical density.
 	
+	\begin{eqnarray}
+	H^2(t)=\frac{8\pi G}{3c^2}\varepsilon_c \\
+	\Rightarrow \varepsilon_c=\frac{3c^2}{8\pi G}H^2(t)
+	\end{eqnarray}
+	
+	If we evaluate this at the current time, then we have
+	
 	\begin{equation}
-	H^2(t)=\frac{8\pi G}{3c^2}\varepsilon_c
-	
+		\varepsilon_{c,0}=\frac{3c^2H_0^2}{8\pi G}
 	\end{equation}
-	
+    
+    If energy density is greater than this, then universe is positively curved, else, it is negatively curved. 
+    \\ \\
+    The currently estimated value of the critical density is 
+    
+    \begin{equation}
+	    \varepsilon_{c,0} = 5200 \pm 1000 MeV m^{-3}
+    \end{equation}
+    
+    The equivalent mass density is given by
+    
+    \begin{equation}
+	    \rho_{c,0}= \frac{\varepsilon_{c,0}}{c^2} = (1.1 \pm 0.3) \times 10^{11} M_\odot Mpc^{-3}
+    \end{equation}
+    
+    We define the density parameter to be 
+    
+   \begin{equation}
+	   \Omega \equiv \frac{\varepsilon(t)}{\varepsilon_c(t)}
+   \end{equation}
+   \\
+  
+   In terms of the density parameter, the Friedmann equation becomes
+   
+   \begin{equation}
+	   1-\Omega(t) = -\frac{\kappa c^2}{R_0^2 a(t)^2 H(t)^2}
+   \end{equation}
+   
+   \chapter{Second Chapter}
+   
+   So far, we have discussed the basic quantities and equations describing the universe, and the relations between them.
+   
+   In a universe with more than one component, the energy density in the equations need to be replaced by the total energy density, which is given by:
+   
+   \begin{equation}
+	   \varepsilon_{total} = \sum_{w} \varepsilon_w
+   \end{equation}
+   
+   and the total pressure needs to be replaced by the total pressure, given by:
+   
+   \begin{equation}
+	   P_{total}=\sum_{w} P_w = \sum_{w} w\varepsilon_w
+   \end{equation}
+   
+   For a single component with equation-of-state parameter w, we have
+   
+   \begin{eqnarray}
+	   \dot{\varepsilon}_w + 3\frac{\dot{a}}{a}(\varepsilon_w + P_w) = 0 \\
+	   \Rightarrow \dot{\varepsilon}_w + 3\frac{\dot{a}}{a}(1+w)\varepsilon_w = 0 \\
+	   \Rightarrow \dot{\varepsilon}_w = -3\frac{\dot{a}}{a}(1+w)\varepsilon_w \\
+	   \Rightarrow \int \frac{d\varepsilon_w}{w} = -3(1+w)\int \frac{da}{a} \\
+	   \Rightarrow \ln \varepsilon_w = 3(1+w) \ln a + \ln \varepsilon_{w,0} \\
+	   \Rightarrow \varepsilon_w = \varepsilon_{w,0} a^{-3(1+w)} 
+   \end{eqnarray}
+   
+   For non-relativistic matter, $ w=0 $.
+   \begin{equation}\label{key}
+	   \therefore \varepsilon_m(a) = \frac{\varepsilon_{m,0}}{a^3}
+   \end{equation}
+   and for radiation, $ w=\dfrac{1}{3} $.
+   \begin{equation}\label{key}
+	   \therefore \varepsilon_r(a) = \frac{\varepsilon_{r,0}}{a^4}
+   \end{equation}
 \end{document}
