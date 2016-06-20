@@ -1,7 +1,10 @@
-\documentclass[a4,10pt,oneside]{report}
+\documentclass[a4,12pt,oneside]{report}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{geometry}\geometry{left = 1in, right = 1in, top = 1in, bottom = 1in}
+\usepackage{hyperref}
+
 
 \begin{document}
 	\title{Summer Project Notes}
@@ -25,11 +28,11 @@
 	
 	if we are using a Cartesian coordinate system. In spherical coordinates, this can be expressed as
 
-	\begin{eqnarray}
+	\begin{align}
 	ds^2=dr^2+ r^2d\theta^2 + r^2sin^2\theta d\phi^2	\\
 	\Rightarrow ds^2=dr^2+ r^2(d\theta^2+sin^2\theta d\phi^2) \\
 	\Rightarrow ds^2=dr^2+ r^2d\Omega^2 
-	\end{eqnarray}
+	\end{align}
 	
 	But now, from Einstein's theory of general relativity we see that space can have curvature. That is, space can either be positively curved, flat(Euclidean), or negatively curved.
 	
@@ -90,17 +93,17 @@
 	
 	Along the spatial geodesic joining the observer and the galaxy, $ \theta $ and $ \phi $ are constant. So, the metric becomes
 	
-	\begin{eqnarray}
+	\begin{align}
 		ds^2=a(t)^2dr^2 \\
 		\Rightarrow ds=a(t)dr \\
-	\end{eqnarray}
+	\end{align}
 	$\therefore$ Proper distance =\[d_p(t)=a(t)\int_0^r dr= a(t).r  \]
 	
 	Rate of change of proper distance:
-	\begin{eqnarray}
+	\begin{align}
 		\dot{d_p}=\dot{a} r = \frac{\dot{a}}{a}d_p \\
 		\Rightarrow \frac{\dot{d_p}}{d_p}=\frac{\dot{a}}{a}
-	\end{eqnarray}
+	\end{align}
 	
 	So, we can see that there is a linear relation between the proper distance to a galaxy and its recession speed:
 	
@@ -115,10 +118,10 @@
 	
 	Light emitted from the galaxy at time $ t_e $ is observed by us at a time $ t_0 $. During its travel, light travelled along a null geodesic($ ds=0 $). We have $ \theta $ and $ \phi $ constant.
 	
-	\begin{eqnarray}
+	\begin{align}
 		c^2dt^2=a(t)^2dr^2 \\
 		\Rightarrow c\frac{dt}{a(t)}=dr
-	\end{eqnarray}
+	\end{align}
 	
 	For a single wave crest emitted at time $ t_e $ and observed at time $ t_0 $, we have
 	
@@ -150,19 +153,19 @@
 	
 	So, we have
 	
-	\begin{eqnarray}
-		\frac{1}{a(t_e)}\int_{t_e}^{t_e+\frac{\lambda_e}{c}} dt = \frac{1}{a(t_o)}\int_{t_o}^{t_o+\frac{\lambda_o}{c}} dt	
+	\begin{align}
+		&\frac{1}{a(t_e)}\int_{t_e}^{t_e+\frac{\lambda_e}{c}} dt = \frac{1}{a(t_o)}\int_{t_o}^{t_o+\frac{\lambda_o}{c}} dt	
 		\\
-		\Rightarrow \frac{1}{a(t_e)}.\frac{\lambda_e}{c} = \frac{1}{a(t_o)}.\frac{\lambda_o}{c}
+		&\Rightarrow \frac{1}{a(t_e)}.\frac{\lambda_e}{c} =\frac{1}{a(t_o)}.\frac{\lambda_o}{c}
 		\\
-		\Rightarrow \frac{1}{a(t_e)}.\lambda_e = \frac{1}{a(t_o)}.\lambda_o
+		&\Rightarrow \frac{1}{a(t_e)}.\lambda_e = \frac{1}{a(t_o)}.\lambda_o
 		\\
-		\Rightarrow \frac{\lambda_o}{\lambda_e} = \frac{a(t_o)}{a(t_e)}
+		&\Rightarrow \frac{\lambda_o}{\lambda_e} = \frac{a(t_o)}{a(t_e)}
 		\\
-		\text{Now,} z=\frac{\lambda_o-\lambda_e}{\lambda_e} \\
-		\Rightarrow z=\frac{\lambda_o}{\lambda_e}-1 \\
-		\Rightarrow 1+z = \frac{\lambda_o}{\lambda_e} = \frac{a(t_o)}{a(t_e)} = \frac{1}{a(t_e)}
-	\end{eqnarray}
+		&\text{Now,} z=\frac{\lambda_o-\lambda_e}{\lambda_e} \\
+		&\Rightarrow z=\frac{\lambda_o}{\lambda_e}-1 \\
+		&\Rightarrow 1+z = \frac{\lambda_o}{\lambda_e} = \frac{a(t_o)}{a(t_e)} = \frac{1}{a(t_e)}
+	\end{align}
 	
 	
 	\section{The equations governing the expansion of the universe}
@@ -202,10 +205,10 @@
 	
 	In the Friedmann equation, putting the curvature constant $\kappa$ equal to zero, gives us a value for the energy density, which we call the critical density.
 	
-	\begin{eqnarray}
+	\begin{align}
 	H^2(t)=\frac{8\pi G}{3c^2}\varepsilon_c \\
 	\Rightarrow \varepsilon_c=\frac{3c^2}{8\pi G}H^2(t)
-	\end{eqnarray}
+	\end{align}
 	
 	If we evaluate this at the current time, then we have
 	
@@ -258,21 +261,263 @@
    
    For a single component with equation-of-state parameter w, we have
    
-   \begin{eqnarray}
-	   \dot{\varepsilon}_w + 3\frac{\dot{a}}{a}(\varepsilon_w + P_w) = 0 \\
-	   \Rightarrow \dot{\varepsilon}_w + 3\frac{\dot{a}}{a}(1+w)\varepsilon_w = 0 \\
-	   \Rightarrow \dot{\varepsilon}_w = -3\frac{\dot{a}}{a}(1+w)\varepsilon_w \\
-	   \Rightarrow \int \frac{d\varepsilon_w}{w} = -3(1+w)\int \frac{da}{a} \\
-	   \Rightarrow \ln \varepsilon_w = 3(1+w) \ln a + \ln \varepsilon_{w,0} \\
-	   \Rightarrow \varepsilon_w = \varepsilon_{w,0} a^{-3(1+w)} 
-   \end{eqnarray}
+   \begin{align}
+	   &\dot{\varepsilon}_w + 3\frac{\dot{a}}{a}(\varepsilon_w + P_w) = 0 \\
+	   &\Rightarrow \dot{\varepsilon}_w + 3\frac{\dot{a}}{a}(1+w)\varepsilon_w = 0 \\
+	   &\Rightarrow \dot{\varepsilon}_w = -3\frac{\dot{a}}{a}(1+w)\varepsilon_w \\
+	   &\Rightarrow \int \frac{d\varepsilon_w}{w} = -3(1+w)\int \frac{da}{a} \\
+	   &\Rightarrow \ln \varepsilon_w = 3(1+w) \ln a + \ln \varepsilon_{w,0} \\
+	   &\Rightarrow \varepsilon_w = \varepsilon_{w,0} a^{-3(1+w)} 
+   \end{align}
    
    For non-relativistic matter, $ w=0 $.
    \begin{equation}\label{key}
-	   \therefore \varepsilon_m(a) = \frac{\varepsilon_{m,0}}{a^3}
+	   \therefore \boxed{\varepsilon_m(a) = \frac{\varepsilon_{m,0}}{a^3}}
    \end{equation}
    and for radiation, $ w=\dfrac{1}{3} $.
    \begin{equation}\label{key}
-	   \therefore \varepsilon_r(a) = \frac{\varepsilon_{r,0}}{a^4}
+	   \therefore \boxed{\varepsilon_r(a) = \frac{\varepsilon_{r,0}}{a^4}}
    \end{equation}
+   
+   \chapter{Cosmological perturbation theory}
+ 
+   \section{Perturbed fluid equations}
+   Let us consider a non-relativistic fluid with mass density $ \rho $, pressure $ P <<\rho $ and velocity $ \vec{u} $, and denote its position vector by $ \vec{r} $ and time by t.
+   \\
+   Then the fluid equations are
+   \\ \\
+   {\bf\underline{Continuity Equation}:}
+   \begin{equation}
+   \partial_t \rho = -\overrightarrow{\nabla_r}.(\rho \vec{u})
+   \end{equation}
+   \\
+   {\bf\underline{Euler's equation}:}
+   \begin{equation}
+   (\partial_t + \vec{u}.\overrightarrow{\nabla_r})\vec{u} = - \frac{\overrightarrow{\nabla_r}P}{\rho} - \overrightarrow{\nabla_r}\Phi
+   \end{equation}
+   
+   The gravitational potential is determined by {\bf Poisson's equation}
+   \begin{equation}\label{key}
+   \overrightarrow{\nabla_r}^2\Phi = 4\pi G\rho
+   \end{equation}
+   
+   Now, we introduce perturbations in the various quantities by decomposing each quantity into background quantities and perturbations. For example,
+   
+   \begin{equation}\label{key}
+   \rho(t,\vec{r}) = \overline{\rho}(t) + \delta\rho(t,\vec{r})
+   \end{equation}
+   
+   \section{Static space without gravity}
+	In this case we consider the potential to be zero, i.e. $ \Phi = 0 $.
+	
+	A solution for this case is given by
+	\begin{equation}\label{key}
+	\overline{\rho}=\text{constant,} \: \overline{P} = \text{constant, and} \: \overline{\vec{u}} = 0.
+	\end{equation} 
+	
+	The linearised evolution equations for the fluctuations are then given by
+	\begin{align}
+	\partial_t \delta\rho = - \overrightarrow{\nabla_r}.(\overline{\rho}\vec{u}) \label{eqn:6}
+	\\
+	\overline{\rho}\delta_t \vec{u} = - \overrightarrow{\nabla_r}\delta P \label{eqn: 7}
+	\end{align}
+	
+	From \eqref{eqn:6} and \eqref{eqn: 7}, we get	
+	\begin{equation}\label{key}
+	\partial_t^2 \delta \rho - \nabla_r^2 \delta P = 0
+	\end{equation}
+	
+	For adiabatic fluctuations, $ \delta P = c_s^2 \delta \rho $, where $ c_s$ is the speed of sound.
+	\begin{equation}\label{key}
+	(\partial_t^2 - c_s^2\nabla^2) \delta \rho = 0.
+	\end{equation}
+	
+	The solution is given by a plane wave:
+	\begin{equation}\label{key}
+	\delta \rho = A \exp i(\omega t - \vec{k}.\vec{r})
+	\end{equation}
+	
+	where $ \omega = c_s k  $.
+	\begin{center}
+	\fbox{Fluctuations oscillate with constant amplitude.}
+	\end{center}
+	
+	\section{Static space with gravity}
+	This case is similar to the last one, but we have a potential source here, which needs to be included. 
+	
+	\begin{equation}\label{key}
+	(\partial_t^2 - c_s^2 \nabla_r^2)\delta \rho = 4 \pi G \delta \rho
+	\end{equation}
+	
+	where we have used the perturbed Poisson equation
+	
+	\begin{equation}\label{key}
+	\nabla^2 \delta \Phi = 4 \pi G \delta \rho
+	\end{equation}
+	
+	This is still solved by 
+	
+	\begin{equation}\label{key}
+	\delta \rho = A \exp i(\omega t - \vec{k}.\vec{r})
+	\end{equation}
+	but with
+	\begin{equation}\label{key}
+	\omega^2 = c_s^2 k ^2 - 4 \pi G \overline{\rho}
+	\end{equation}
+	
+	The critical wavenumber is found by setting $ \omega = 0 $.
+	\begin{equation}\label{key}
+	k_J = \frac{\sqrt{4 \pi G \overline{\rho}}}{c_s}
+	\end{equation}
+	
+	\fbox{For small scales, pressure dominates and the oscillations occur as before.}
+	\\\\
+	\fbox{For large scales, gravity dominates and the fluctuations increase exponentially with time.}
+   	\\\\	
+	The crossover happens at the {\bf Jeans' length}
+	
+	\begin{equation}
+	\boxed{\lambda_J = \frac{2 \pi}{k_J} = c_s\sqrt{\frac{\pi}{G\overline{\rho}}}}
+	\end{equation}
+	
+	
+	\section{Expanding space}
+	
+	Relationship between physical coordinates $\vec{r}$ and comoving coordinates $ \vec{x} $	is given by,
+	
+	\begin{equation}\label{key}
+	\vec{r}(t) = a(t)\vec{x}
+	\end{equation}
+	
+	The velocity is given by
+	\begin{equation}\label{key}
+	\vec{u}(t) = \dot{\vec{r}} = \dot{a}\vec{x} + a\dot{\vec{x}} = \frac{\dot{a}}{a}.a(t)\vec{x} + a\dot{\vec{x}}
+	\end{equation}
+	\begin{equation}\label{key}
+	=H\vec{r} + a\dot{\vec{x}}
+	\end{equation}
+	
+	In the static case, the time and space derivatives defined from $ t $ and $ \vec{r} $ were independent. But this is not the case anymore.
+	
+	It is convenient to use comoving coordinates $ \vec{x} $ instead.
+	Using the relation, 
+	\begin{equation}\label{key}
+	\vec{r}(t)=a(t)\vec{x} \text{  ,}
+	\end{equation}
+	we can write 
+	\begin{equation}\label{key}
+	\overrightarrow{\nabla_r} = a^{-1}\overrightarrow{\nabla_x}
+	\end{equation}
+	
+	Relationship between time derivatives at fixed $ \vec{r} $ and fixed $ \vec{x} $ is,
+	\begin{align}\label{key}
+	\left(\frac{\partial}{\partial t}\right)_r &= \left(\frac{\partial}{\partial t}\right)_x + \left(\frac{\partial \vec{x}}{\partial t}\right)_r.\overrightarrow{\nabla_x} \nonumber
+	\\[12pt]
+	&=\left(\frac{\partial}{\partial t}\right)_x+\left(\frac{\partial a^{-1}\vec{r}}{\partial t}\right)_r.\overrightarrow{\nabla_x} \nonumber
+	\\
+	&=\left(\frac{\partial}{\partial t}\right)_x - \frac{\dot{a}}{a^2}.\vec{r}.\overrightarrow{\nabla_x} \nonumber
+	\\
+	&=\left(\frac{\partial}{\partial t}\right)_x - H\vec{x}.\overrightarrow{\nabla_x}
+	\end{align}
+	
+	Substituting these quantities into the continuity equation, we get \\ \\
+	{\bf \underline{Continuity equation:}}
+	\begin{equation}\label{key}
+	\left[\frac{\partial}{\partial t} - H\vec{x}.\overrightarrow{\nabla}\right].[\overline{\rho}(1+\delta)] + \frac{1}{a}.\overrightarrow{\nabla}.[\overline{\rho}(1+\delta)(Ha\vec{x}+\vec{v})] = 0
+	\end{equation}
+	
+	\begin{center}
+		Here $ \delta \equiv \dfrac{\delta\rho}{\overline{\rho}} $ is the {\bf density contrast}.
+	\end{center}
+	
+	For the zeroth order in fluctuations,(dropping perturbations $ \delta $ and $ \vec{v} $), we have
+	
+	\begin{equation}\label{eqn: 24}
+	\frac{\partial \overline{\rho}}{\partial t} + 3H\overline{\rho} = 0         \quad\quad (\because \overrightarrow{\nabla_x}.\vec{x} = 3)
+	\end{equation}
+	
+	For the first order in fluctuations, we have
+	\begin{align}\label{key}
+	&\left[\frac{\partial}{\partial t} - H\vec{x}.\overrightarrow{\nabla}\right][\overline{\rho}\delta] + \frac{1}{a}\overrightarrow{\nabla}.[\overline{\rho}Ha\vec{x}\delta + \overline{\rho}\vec{v}] = 0 \nonumber
+	\\
+	&\Rightarrow\delta\frac{\partial \overline{\rho}}{\partial t} + \overline{\rho}\frac{\partial \delta}{\partial t} - \overline{\rho}H\vec{x}.\overrightarrow{\nabla}\delta + \overline H.3.\delta + \overline{\rho} H \vec{x}. \overrightarrow{\nabla} \delta + \frac{\overline{\rho}}{a}\overrightarrow{\nabla}.\vec{v} = 0 \nonumber
+	\\
+	&\Rightarrow\left(\frac{\partial \overline{\rho}}{\partial t} + 3H\overline{\rho}\right)\delta + \overline{\rho}\frac{\partial \delta}{\partial t} + \frac{\overline{\rho}}{a}\vec{v} = 0 \nonumber
+	\end{align}
+	From the zeroth order in fluctuations\eqref{eqn: 24}, we know that the coefficient of $ \delta $ is zero. 
+	\begin{equation}\label{continuity}
+	\frac{\partial \delta}{\partial t} = -\frac{1}{a}\overrightarrow{\nabla}.\vec{v} \Rightarrow \dot{\delta} = -\frac{1}{a}\overrightarrow{\nabla}.\vec{v}
+	\end{equation}
+	{\bf \underline{Euler equation:}}
+	\\ \\
+	\begin{equation}\label{euler}
+	\dot{\vec{v}} + H\vec{v} = -\frac{1}{a\overline{\rho}}\overrightarrow{\nabla}\delta P - \frac{1}{a}\overrightarrow{\nabla}\delta\Phi
+	\end{equation}
+	In the absence of gravitational and pressure perturbations, we simply get $ \vec{v}\propto a^{-1} $.
+	\\ \\ {\bf \underline{Poisson's equation:}}
+	\begin{equation}\label{poisson}
+	\overrightarrow{\nabla}^2\delta \Phi = 4\pi Ga^2\overline{\rho}\delta
+	\end{equation}
+	
+	$ \partial_t $.\eqref{continuity} gives
+	\begin{align}\label{key}
+	&\frac{\partial}{\partial t}.\frac{\partial \delta}{\partial t} = \frac{\partial}{\partial t}.\left(-\frac{1}{a}\overrightarrow{\nabla}.\vec{v}\right)	
+	\\
+	&\Rightarrow \frac{\partial^2\delta}{\partial t^2} = -\frac{1}{a}.\frac{\partial}{\partial t}(\overrightarrow{\nabla}.\vec{v})
+	\\
+	&\Rightarrow\overrightarrow{\nabla}.\dot{\vec{v}} = -a\ddot{\delta}  
+	\end{align}
+	
+	$ \overrightarrow{\nabla} $.\eqref{euler} gives 
+	\begin{equation}\label{key}
+	\overrightarrow{\nabla}.\dot{\vec{v}} + H\overrightarrow{\nabla}.\vec{v} = -\frac{1}{a\overline{\rho}}\overrightarrow{\nabla}^2\delta P - \frac{1}{a}\overrightarrow{\nabla}^2\delta\Phi
+	\end{equation}
+	
+	Combining \eqref{continuity}, \eqref{euler}, \eqref{poisson}, we get
+	\begin{align}
+	&-a\ddot{\delta} + H\overrightarrow{\nabla}.\vec{v} = -\frac{1}{a\overline{\rho}}\overrightarrow{\nabla}^2 \delta P - 4\pi Ga\overline{\rho}\delta \nonumber
+	\\
+	&\Rightarrow-a\ddot{\delta} + H.(-a\dot{\delta}) = -\frac{1}{a\overline{\rho}}c_s^2\overrightarrow{\nabla}^2.\delta \rho - 4 \pi Ga\overline{\rho}\delta \nonumber
+	\\
+	&\Rightarrow \ddot{\delta} + H\dot{\delta} = \frac{c_s^2}{a^2}\overrightarrow{\nabla}^2\delta + 4\pi Ga\overline{\rho}\delta \nonumber
+	\\
+	&\boxed{\Rightarrow \ddot{\delta}+H\dot{\delta}-\frac{c_s^2}{a^2}\overrightarrow{\nabla}^2\delta = 4\pi Ga\overline{\rho}\delta} \label{einstein de sitter: 1}
+	\end{align}
+	
+	During matter-dominated era, \eqref{einstein de sitter: 1} reads
+	\begin{equation}\label{key}
+	\ddot{\delta_m} + 2H\dot{\delta_m} - 4\pi G\overline{\rho}_m\delta_m = 0
+	\end{equation}
+	Since $ a\propto t^{\frac{2}{3}} $, $ H=\dfrac{3}{2}t $. So we have
+	\begin{equation}\label{key}
+	\ddot{\delta_m} + \frac{4}{3t}\dot{\delta_m} - \frac{2}{3t^2}\delta_m = 0
+	\end{equation}
+	Here we have used the fact that in the matter dominated era, $ 4\pi G \overline{\rho} = \dfrac{3}{2}H^2 $.
+	\\
+	To solve this equation, we assume a solution of the form $ \delta_m = kt^p $. \\ \\
+	\begin{center}
+		Then, $ \dot{\delta_m} = pkt^{p-1} $ and $ \ddot{\delta_m} = p(p-1)kt^{p-2}$.
+	\end{center}
+	
+	Substituting, we get
+	
+	\begin{align}\label{key}
+	&p(p-1)kt^{p-2} + \frac{4}{3}pkt^{p-2} - \frac{2}{3}kt^{p-2} = 0 \nonumber
+	\\
+	&\Rightarrow p(p-1)+\frac{4p}{3} - \frac{2}{3} = 0 \nonumber
+	\\
+	&\Rightarrow 3p^2 - 3p + 4p -2 =0 \nonumber
+	\\
+	&\Rightarrow 3p^2+p-2 = 0 \nonumber
+	\\
+	&\Rightarrow p=-1 \text{ or } p=\frac{2}{3} \nonumber
+	\end{align}
+	
+	\begin{equation}\label{key}
+	\therefore \delta_m \propto \begin{cases}t^{-1}, &\propto a^{-\frac{3}{2}}\\
+	t^{\frac{2}{3}}, &\propto a
+	\end{cases}
+	\end{equation}
+	
+	Hence, the growing mode of fluctuations grows like the scale factor during the matter-dominated era.
 \end{document}
