@@ -26,8 +26,8 @@ for i in a_list:
 
 fig=plt.figure()
 ax=fig.add_subplot(111)
-ax.plot(a_list,delta_list, label="0.3,0")
-ax.plot(a_list,delta_list1,label="0.3,0.7")
+ax.plot(a_list,delta_list, label="0.3,0.7")
+ax.plot(a_list,delta_list1,label="0.3,0")
 ax.set_xlabel('Scale factor')
 ax.set_ylabel('Density contrast')
 ax.set_title('Density contrast as a function of scale factor')
