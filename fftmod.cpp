@@ -18,7 +18,7 @@ void gaussian(fftw_complex *arr, int n, float mean, float stdev, float beg, floa
     for(int i=0;i<n;i++)
     {
       x[i] = beg + st*i;
-      arr[i][0] = cos(2*pi*x[i]*f0)*exp(-1*pow(x[i]-mean,2)/(2*pow(stdev,2)));
+      arr[i][0] = exp(-1*pow(x[i]-mean,2)/(2*pow(stdev,2)));
       arr[i][1] = 0;
     }
 }
