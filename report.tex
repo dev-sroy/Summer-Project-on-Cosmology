@@ -2,6 +2,7 @@
 
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{verbatim}
 \usepackage{geometry}\geometry{left = 1in, right = 1in, top = 1in, bottom = 1in}
 \usepackage{hyperref}
 \hypersetup{
@@ -11,9 +12,20 @@
   citecolor   = red %Colour of citations
 }
 
+\newenvironment{sans}
+	{\fontfamily{lmtt}
+	 \selectfont
+	 \verbatim
+	 }
+	 {
+	 \endverbatim
+	 \par
+	 }
+\newcommand{\textsans}{\fontfamily{lmtt}\selectfont}
+
 \begin{document}
 	\title{Summer Project Notes}
-	\date{9 June 2016}
+	\date{18 July 2016}
 	\author{Sohom Roy}
 	\maketitle
 	
@@ -25,7 +37,7 @@
 	
 	\section{Form of the metric for a homogeneous, isotropic universe}
 	
-	Initially, Newton had assumed that space is Euclidean. Then the distance between two points assumes the very simple form
+	Initially, Newton had assumed that space is static and Euclidean. Then the distance between two points assumes the very simple form
 	
 	\begin{equation}
 		ds^2=dx^2+dy^2+dz^2
@@ -61,7 +73,7 @@
 		\end{cases}
 	\end{equation}
 	
-	Thw Minkowski metric is given by
+	The Minkowski metric is given by
 	
 	\begin{equation}
 		ds^2=-c^2dt^2+dr^2+r^2d\Omega^2
@@ -535,7 +547,7 @@
 	
 	We can extend this method to gas outside our galaxy, that is, the intergalactic medium. The light source that we use to 
 	observe the intergalactic medium are quasars, which are extremely luminous and are believed to be the light emitted from 
-	supermassive black holes lying at the center of external galaxies. 
+	supermassive black holes lying at the center of galaxies. 
 	Quasars can help us study the properties of the gas present in between the galaxies.
 	If there are intervening galaxies or neutral gas present in the path of light from the quasar to the observer, then the gas might absorb some of the light,
 	which can be observed.
@@ -572,5 +584,240 @@
         {\bf Gunn-Peterson trough}.
         
      
+        \chapter{Fourier transform and its applications}
+        
+        \section{Basic definitions}
+        
+        The Fourier Transform of $f(x)$ is defined as
+        
+        \begin{equation}
+         F(\omega) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} f(t)e^{-i2\pi \omega t} dt
+        \end{equation}
+        
+        The inverse Fourier transform is defined as
+        
+        \begin{equation}
+         f(t) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} F(\omega)e^{-i2\pi \omega t} d\omega
+        \end{equation}
+        
+        In three-dimensional space, this becomes
+        
+        \begin{equation}
+         F(\vec{k}) = \frac{1}{(2\pi)^\frac{3}{2}}\int f(\vec{r})e^{-i\vec{k}.\vec{r}} d^3r
+        \end{equation}
+        
+        \begin{equation}
+         f(\vec{r}) = \frac{1}{(2\pi)^\frac{3}{2}}\int F(\vec{k})e^{i\vec{k}.\vec{r}} d^3r
+        \end{equation}
+        
+        \section{Convolution}
+        
+        Let us consider two functions $f(x)$ and $g(x)$ having Fourier transforms $F(\omega)$ and $G(\omega)$ respectively, then the convolution of f and g is defined by
+        
+        \begin{equation}
+         f \ast g \equiv \frac{1}{\sqrt{2\pi}} \int_\infty^\infty g(y)f(x-y) dy
+        \end{equation}
+        
+        In three dimensions, this becomes
+        
+        \begin{equation}
+         (f \ast g)(\vec{r}) \equiv \frac{1}{(2\pi)^\frac{3}{2}}\int g(\vec{r'})f(\vec{r}-\vec{r'}) d^3r
+        \end{equation}
+
+
+        The convolution theorem states that the Fourier transform of the convolution of two functions is the product of the Fourier transforms of the individual functions.
+        
+        \section{Discrete Fourier transform}
+        
+        We take a set of N equally spaced points $x_k$ on the interval $(0,2\pi)$:
+        
+        \begin{equation}
+         x_k = \frac{2\pi k}{N}, k=0,1,2,...,N-1
+        \end{equation}
+        
+        The Discrete Fourier Transform(DFT) is defined as
+        
+        \begin{equation}
+         g_p = \frac{1}{\sqrt{N}}\sum_{k=0}^{N-1} e^{\frac{2\pi i kp}{N}} f_k
+        \end{equation}
+        
+        where $f_k \equiv f(x_k)$.
+        \\
+        The inverse transformation is defined by
+        
+        \begin{equation}
+         f_j = \frac{1}{\sqrt{N}}\sum_{p=0}^{N-1} e^{\frac{-2\pi i jp}{N}} g_p
+        \end{equation}
+
+        \section{The FFTW library}
+        
+        For all computations involving Fourier transforms, we will be using the FFTW({\em Fastest Fourier Transform in the West}) library.
+        
+        The basic things to know about this library are:
+        
+        The datatype {\textsans fftw\_complex} is used to store complex numbers, which is basically a {\textsans double} type array of size 2.
+        
+        Memory allocation and de-allocation are done using the commands:
+        
+        \begin{sans}
+        	void *fftw_malloc(size_t n);
+        	void fftw_free(void *p);
+        \end{sans}
+
+        All the information for doing the Fourier transforms are stored in plans.
+        Plans are of the type {\textsans fftw\_plan}. 
+        
+        These plans can be executed later by calling the function {\textsans fftw\_execute().}
+        
+        The multi-dimensional arrays passed to {\textsans fftw\_plan\_dft} are expected to be stored in row-major order. 
+        
+        Let us consider an array of rank $d$ whose dimensions are $ n_0 \times n_1 \times n_2 \times ... \times n_{d-1} $. If we specify a location in the array by a tuple of indices, one for each dimension, say:
+        $ (i_0,i_1,i_2,i_3,...,i_{d-1})  $. Then the position of the element is given by
+        $ i_{d-1} + n_{d-1}(i_{d-2}+ n_{d-2}(... + n_1i_0)). $
+        
+        After the plans have been executed, they are to be destroyed with the {\textsans fftw\_destroy\_plan} command.
+        
+        Some common plans which are available in the library are:
+        
+        \begin{itemize}
+        	\item {\textsans fftw\_plan fftw\_plan\_dft\_1d(int n0, fftw\_complex *in, fftw\_complex *out, int sign, unsigned flags);}
+        	\item {\textsans fftw\_plan fftw\_plan\_dft\_2d(int n0, int n1, fftw\_complex *in, fftw\_complex *out, int sign, unsigned flags);}
+        	\item {\textsans fftw\_plan fftw\_plan\_dft\_3d(int n0, int n1, int n2, fftw\_complex *in, fftw\_complex *out, int sign, unsigned flags);}
+        	\item {\textsans fftw\_plan fftw\_plan\_dft(int rank, const int *n, fftw\_complex *in, fftw\_complex *out, int sign, unsigned flags);}
+        \end{itemize}
+        
+        A sample program to compute the Fourier transform of a Gaussian input signal is given below:
+        
+        \begin{sans}
+        	#include<iostream>
+        	#include<fftw3.h>
+        	#include<complex.h>
+        	#include<fstream>
+        	#include<cmath>
+        	#include <malloc.h>
+        	
+        	using namespace std;
+        	const float pi = 3.1415923;
+        	
+        	void arrange(fftw_complex *arr, int n)
+        	{
+        	for(int i=0;i<n/2;i++)
+        	{
+        	float temp0 = arr[i][0];
+        	float temp1 = arr[i][1];
+        	arr[i][0]=arr[n/2+i][0];
+        	arr[i][1]=arr[n/2+i][1];
+        	arr[n/2+i][0]=temp0;
+        	arr[n/2+i][1]=temp1;
+        	}
+        	}
+        	double max(double *arr, int n)
+        	{
+        	double m=arr[0];
+        	for(int i=1;i<n;i++)
+        	{
+        	if(arr[i]>m)
+        	{
+        	m=arr[i];
+        	}
+        	}
+        	return m;
+        	}
+        	int deviate(double *arr, int n)
+        	{
+        	int pos=-1;
+        	double hmax=0.5*max(arr,n);
+        	for(int i=n/2;i<n;i++)
+        	{
+        	if(arr[i]<hmax)
+        	{
+        	pos=i;
+        	break;
+        	}
+        	}
+        	int dev=abs(n-2*pos);
+        	return dev;
+        	}
+        	int main()
+        	{
+        	ofstream ofile,ofilep;
+        	ofstream ifile;
+        	ofile.open("output.txt");
+        	ofilep.open("power.txt");
+        	ifile.open("input.txt");
+        	fftw_complex *in, *out;
+        	double *out_abs,*p;
+        	fftw_plan p1;
+        	int n;
+        	char c;
+        	float beg,end,step,mean,stdev,range;
+        	cout<<"Enter the number of elements: ";
+        	cin>>n;
+        	cout<<"Enter starting element: ";
+        	cin>>beg;
+        	cout<<"Enter ending element: ";
+        	cin>>end;
+        	cout<<"Enter mean: ";
+        	cin>>mean;
+        	cout<<"Enter standard deviation: ";
+        	cin>>stdev;
+        	in=(fftw_complex *) fftw_malloc(sizeof(fftw_complex)*n);
+        	out=(fftw_complex *) fftw_malloc(sizeof(fftw_complex)*n);
+        	out_abs=(double *) malloc(sizeof(double)*n);
+        	p=(double *) malloc(sizeof(double)*n);
+        	range=end-beg;
+        	step=range/float(n);
+        	for(int i=0; i<n; i++)
+        	{
+        	float elt=beg+step*i;
+        	in[i][0] = exp((-1)*pow(elt-mean,2)/(2*pow(stdev,2)))*(1/sqrt(n));
+        	in[i][1] =0;
+        	}
+        	p1=fftw_plan_dft_1d(n, in, out, FFTW_FORWARD, FFTW_ESTIMATE);
+        	fftw_execute(p1);
+        	cout<<"Input array: ";
+        	for(int i=0;i<n;i++)
+        	{
+        	cout<<i<<" "<<in[i][0]<<" "<<in[i][1]<<endl;
+        	ifile<<i<<" "<<in[i][0]<<endl;
+        	}
+        	fftw_free(in);
+        	cout<<endl;
+        	cin>>c;
+        	
+        	arrange(out,n);
+        	cout<<"Output array: ";
+        	for(int i=0;i<n;i++)
+        	{
+        	double norm = sqrt(pow(out[i][0],2)+pow(out[i][1],2));
+        	out_abs[i]=norm;
+        	cout<<i<<" "<<out[i][0]<<" "<<out[i][1]<<" "<<norm<<endl;
+        	ofile<<i<<" "<<out[i][0]<<" "<<out[i][1]<<" "<<norm<<endl;
+        	}
+        	
+        	cout<<"Absolute values: ";
+        	for(int i=0;i<n;i++)
+        	{
+        	cout<<i<<" "<<out_abs[i]<<endl;
+        	}
+        	
+        	cout<<endl;
+        	int hmax=deviate(out_abs,n);
+        	cout<<hmax<<endl;
+        	for(int i=0;i<n;i++)
+        	{
+        	p[i] = pow(out_abs[i],2)+pow(out_abs[n-1-i],2);
+        	ofilep<<i<<" "<<p[i]<<endl;
+        	}
+        	ofile.close();
+        	ifile.close();
+        	ofilep.close();
+        	fftw_destroy_plan(p1);
+        	fftw_free(out);
+        	delete out_abs;
+        	delete p;
+        	return 0;
+        	}
+        \end{sans}
         
 	\end{document}
